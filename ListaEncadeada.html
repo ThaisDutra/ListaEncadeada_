@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace inventario_Itens
+{
+    public class Item
+    {
+        public string objeto;
+        public int position;
+        public Item next = null;
+        public Item(string objeto, int position)
+        {
+            this.objeto = objeto;
+            this.position = position;
+        }
+    }
+
+    namespace ListaEncadeada
+    {
+    internal class Program
+    {
+    private static void Main(string[] args)
+    {
+            //Introdução
+            Console.WriteLine("Seja bem-vindo! Eu sou Luigi, o responsável por seu inventário.");
+            Console.WriteLine("Qual ferramenta vossa senhoria deseja para ajudar-lhe em sua missão mágica?");
+            string objetoDesejado = Console.ReadLine();
+             
+            Item Item1 = new Item("ESPADA", 1);
+            Item Item2 = new Item("ESCUDO", 2);
+            Item Item3 = new Item("CAPA DE INVISIBILIDADE", 3);
+            Item Item4 = new Item("ENCANTAMENTO", 4);
+            Item Item5 = new Item("VARINHA", 5);
+            Item Item6 = new Item("+AGILIDADE", 6);
+            Item Item7 = new Item("+VELOCIDADE", 7);
+            Item Item8 = new Item("+DESTREZA", 8);
+            Item Item9 = new Item("+INTELIGENCIA", 9);
+            Item Item10 = new Item("DRAGAO", 10);
+
+            Item1.next = Item2;
+            Item2.next = Item3;
+            Item3.next = Item4;
+            Item4.next = Item5;
+            Item5.next = Item6;
+            Item6.next = Item7;
+            Item7.next = Item8;
+            Item8.next = Item9;
+            Item9.next = Item10;
+
+            // Iterando na lista
+            Item currentElement = Item1;
+
+            while (currentElement != null)
+            {   
+                if(currentElement.objeto == objetoDesejado)
+                {
+                    Console.WriteLine("O objeto " + currentElement.objeto + " se encontra na posição: " + currentElement.position );
+                    break;
+                }
+                currentElement = currentElement.next;
+            }
+
+            if(currentElement == null)
+            {
+                Console.WriteLine("O objeto não foi encontrado no seu inventário.");
+            }
+
+                Console.ReadKey();
+               
+    }
+    }
+    }
+}
